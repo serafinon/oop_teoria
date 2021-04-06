@@ -27,4 +27,5 @@ public class Interfaccia_List {
             System.out.println(l.get(i));
 
     }
-}
+
+
