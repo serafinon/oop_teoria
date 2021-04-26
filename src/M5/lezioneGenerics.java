@@ -5,7 +5,14 @@ package M5;
 *
 *   i generics consentono di indicare il tipo degli elementi delle collections (quello tra <>)
 *
-*   si possono applicare i generics anche a altre interfacce (es. shop)
+*   si possono applicare i generics anche a altre interfacce e classi(es. shop)
+*
+*   anche i metodi possono essere generic (es. fill() di java.util.Collections)
+*       static <T> void fill(List<? super T> list, T obj)
+*
+*   i generics hanno rilevanza solo a tempo di compilazione, non a runtime (code erasure)
+*       quindi non posso confrontare i tipi di due collection all'interno del codice
+*
  */
 
 import java.util.ArrayList;
@@ -64,7 +71,7 @@ public class lezioneGenerics {
 
         fruitShop.sell(frutte, 2);
         fruitShop.sell(prodotti, 2); //essendo negozio di frutta può vendere prodotti, che è superclasse di Fruit, (perchè tutti la frutta è un prodotto)
-        //productShop.sell(frutte, 2);  questo non va bene perchè List<Fruit> NON è UN SOTTOTIPO DI List<Product>
+        //productShop.sell(frutte, 2);  questo non va bene perchè List<Fruit> NON è UN SOTTOTIPO DI List<Product> (vedi Shop.java)
         productShop.sell(prodotti, 2);
 
         fruitShop.buy(frutte);
@@ -73,19 +80,7 @@ public class lezioneGenerics {
         productShop.buy(prodotti);
 
 
-        /*
-        *   List<Fruit> NON è UN SOTTOTIPO DI List<Product>
-        *   sono entrambi sottotipi di List<?>
 
-        *   List<?> è una lista di unknown
-        *   ? è una wildcard che indica qualsiasi tipo
-        *       le wildcard supportano upper e lower bounds
-        *
-        *       List<? extends Fruit> può contenere qualcunque cosa che estenda Fruit
-        *
-        *       List<? super Fruit> può contenere qualunque cosa che sia padre (o padre del padre ecc.) di Fruit
-        *
-         */
 
     }
 
