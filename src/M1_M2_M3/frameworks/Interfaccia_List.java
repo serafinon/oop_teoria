@@ -12,20 +12,21 @@ import java.util.List;
  */
 public class Interfaccia_List {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        List<Person> l= new ArrayList<Person>();
+        List<Person> l = new ArrayList<Person>();
         //ArrayList è una classe che implementa l'interfaccia List
 
-        l.add(new Person("Luca","Bianchi"));
+        l.add(new Person("Luca", "Bianchi"));
         l.add(new Person("Marco", "Rossi"));
 
-        for(Person p : l)
+        for (Person p : l)
             System.out.println(p);
 
-        for(int i=0; i< l.size(); i++)
+        for (int i = 0; i < l.size(); i++)
             System.out.println(l.get(i));
 
     }
+}
 
 
