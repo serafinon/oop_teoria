@@ -19,8 +19,19 @@ import java.awt.event.ActionListener;
 *   quando un evento si verifica, il theread degli eventi invoca i Listeners passando l'evento come parametro
 *       listener.actionPerformed(evento)
 *
-*   il listener può essere la stessa classe frame o un'altra classe fatta ad hoc
+*   il listener può essere la stessa classe frame o un'altra classe fatta ad hoc (delega)
+*   all'interno della classe frame-listener potrei definire l'azione dentro il metodo addActionListener del component
+*       component.addActionListener(new ActionListener(){
+*           @Override
+*           public void actionPerformed(ActionEvent e){
+*               //do qualcosa
+*           }
+*       });
+*
  */
+
+
+//uso la stessa classe JFrame come listener
 public class ProvaEventi extends JFrame implements ActionListener{
 
     private static final long serialersionUID = 1L;
