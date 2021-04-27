@@ -28,6 +28,9 @@ package M8;
 *       è composta da una JMenuBar a cui sono attaccati i JMenu, e per ogni JMenu ho più JMenuItem
  */
 
+
+
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -81,7 +84,6 @@ public class SWiiiing extends JFrame{
         setSize(350,150);
         setVisible(true);
 
-
     }
 
     public static void main(String[] args){
@@ -90,7 +92,7 @@ public class SWiiiing extends JFrame{
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SWiiiing();
+                SWiiiing frame = new SWiiiing();
             }
         });
 
