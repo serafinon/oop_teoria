@@ -86,6 +86,34 @@ package M9;
 
 import java.sql.*;
 
-public class Databases {
+public class DBManager { //delego tutte le eccezioni generate
 
+    public static final String JBDCDriverMySQL = "com.mysql.jdbc.Driver";
+    public static final String JBDCURLMySQL = "jdbc:mysql://localhost/dbname?user=user&password=pass";
+
+    protected Statement statement;
+    protected Connection connection;
+
+    public DBManager(String Driver, String URL) throws ClassNotFoundException, SQLException {
+            Class.forName(Driver);
+            connection = DriverManager.getConnection(URL);
+            statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+    }
+
+    //i metodi "passaparola" successdivi consentono di usare i metodi dell'oggetto statement dall'esterno, tramite l'oogetto DBManager
+    public ResultSet executeQuery(String query) throws SQLException {
+        return statement.executeQuery(query);
+    }
+
+    public int executeUpdate(String query) throws SQLException {
+        return statement.executeUpdate(query);
+    }
+
+    public void close() throws SQLException {
+        if(connection != null){
+            statement.close();
+            connection.close();
+        }
+    }
 }
